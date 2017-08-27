@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="birthdayApp">
+<head>
+  <meta charset="UTF-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+     <style> body { font-size: 1.2em; }</style>
+  <title>Birthday List App</title>
+</head>
+<body>
+  <h1>Birthday List App</h1>
+   <div ng-controller='birthdayAddController as birthAdder'>
+     <input type="text" ng-model="birthAdder.birthName" placeholder="Name of friend">
+     <input type="text" ng-model="birthAdder.birthSurname" placeholder="Surname of friend">
+     <input type="text" ng-model="birthAdder.birthDate" placeholder="Birth date of friend">
+     <button ng-click="birthAdder.addBirthday();">Add your friend's birthday</button>
+   </div>
+
+  <div ng-controller='birthdayShowController as birthList'>
+    <ol>
+      <li ng-repeat="item in birthList.items">
+        {{item.name}} {{item.surname}}: {{item.date}}
+        <button ng-click="birthList.removeBirth($index);">Remove from List</button>
+      </li>
+    <ol>
+  </div>
+</body>
+</html>
